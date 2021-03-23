@@ -33,17 +33,33 @@ const signOut = () => {
 const loginUI = document.getElementById('firebase-ui-container');
 
 ui.start('#firebase-ui-container', uiConfig);
+let userName;
 
 auth.onAuthStateChanged((user) => {
 	if (user) {
 		//ログイン時の処理
-		const signOutMessage = `
-        <p class="login-text">Hello, ${user.displayName}!</p>
+		const docUser = db.collection('profiles').doc(`${auth.currentUser.uid}`);
+		docUser
+			.get()
+			.then((doc) => {
+				if (doc.exists) {
+					console.log(doc.data());
+					userName = doc.data().name;
+
+					const signOutMessage = `
+        <p class="login-text">Hello, ${userName}!</p>
         <button type="submit" onClick="signOut()">サインアウト</button>
         `;
-		document.getElementById('auth').innerHTML = signOutMessage;
-		console.log('ログインしています');
-		loginUI.style.display = 'none';
+					document.getElementById('auth').innerHTML = signOutMessage;
+					console.log('ログインしています');
+					loginUI.style.display = 'none';
+				} else {
+					console.log('error');
+				}
+			})
+			.catch((error) => {
+				console.log(error, 'エラーだお');
+			});
 
 		db.collection('profiles')
 			.doc(`${auth.currentUser.uid}`)
