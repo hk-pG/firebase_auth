@@ -1,0 +1,32 @@
+.auth-container {
+	width: 80%;
+	margin: 0 auto;
+}
+
+#auth {
+	display: flex;
+	flex-direction: column;
+	width: 50%;
+	margin: 0 auto;
+}
+
+.login-text {
+	text-align: center;
+}
+
+#auth > button {
+	width: 30%;
+	margin: 0 auto;
+	background-color: rgba(59, 108, 241, 0.521);
+	color: white;
+	box-shadow: 0 0 10px blue;
+	border: none;
+	outline: none;
+	border-radius: 30px;
+	transition-duration: 0.3s;
+	cursor: pointer;
+}
+
+#auth > button:active {
+	box-shadow: none;
+}
