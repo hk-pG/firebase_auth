@@ -4,24 +4,10 @@ body {
 
 main {
 	margin-top: 10%;
-	display: flex;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
 }
 
 #canvas {
-	margin-left: 40%;
-}
-
-.form {
-	margin: 0 auto;
-	border: 1px solid white;
-}
-
-.form > input {
-	display: block;
-	margin: 0 auto;
-	width: 80%;
-}
-
-.sample {
-	color: lime;
+	margin-left: 60%;
 }

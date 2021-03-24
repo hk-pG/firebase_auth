@@ -32,8 +32,6 @@ const signOut = () => {
 	});
 };
 
-ui.start('#firebase-ui-container', uiConfig);
-
 auth.onAuthStateChanged((user) => {
 	if (user) {
 		//ログインしている時
@@ -57,5 +55,9 @@ auth.onAuthStateChanged((user) => {
 			.catch((error) => {
 				console.log('エラーだお', error);
 			});
+	} else {
+		//ログアウトしている時
+		document.getElementById('isLogin').style.display = 'none';
+		ui.start('#firebase-ui-container', uiConfig);
 	}
 });
