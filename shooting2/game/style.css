@@ -1,0 +1,27 @@
+body {
+	background-color: #555555;
+}
+
+main {
+	margin-top: 10%;
+	display: flex;
+}
+
+#canvas {
+	margin-left: 40%;
+}
+
+.form {
+	margin: 0 auto;
+	border: 1px solid white;
+}
+
+.form > input {
+	display: block;
+	margin: 0 auto;
+	width: 80%;
+}
+
+.sample {
+	color: lime;
+}
