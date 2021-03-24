@@ -13,8 +13,9 @@ const uiConfig = {
 	signInFlow: 'popup',
 	signInSuccessUrl: 'index.html',
 	signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID],
-	toUrl: 'index.html',
-	privacyUrl: 'index.html',
+	//設定によって、無効な値だと返される、エラーにはならない。
+	// toUrl: 'index.html',
+	// privacyUrl: 'index.html',
 };
 const signOut = () => {
 	firebase.auth().onAuthStateChanged((user) => {
@@ -61,17 +62,18 @@ auth.onAuthStateChanged((user) => {
 				console.log(error, 'エラーだお');
 			});
 
-		db.collection('profiles')
-			.doc(`${auth.currentUser.uid}`)
-			.set({
-				name: '名前（仮）',
-				score: 3,
-			})
-			.then(() => {
-				console.log('success');
-			})
-			.catch((error) => {
-				console.error('エラーだお', error);
-			});
+		/* データの追加処理　 */
+		// db.collection('profiles')
+		// 	.doc(`${auth.currentUser.uid}`)
+		// 	.set({
+		// 		name: '名前（仮）',
+		// 		score: 3,
+		// 	})
+		// 	.then(() => {
+		// 		console.log('success');
+		// 	})
+		// 	.catch((error) => {
+		// 		console.error('エラーだお', error);
+		// 	});
 	}
 });
