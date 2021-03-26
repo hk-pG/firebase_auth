@@ -35,7 +35,7 @@ body main #isLogout section {
 }
 
 body main #isLogout #firebase-ui-container {
-  margin-right: 55%;
+  width: 100%;
 }
 
 body main #isLogout .login-text {
@@ -104,7 +104,7 @@ body main #isLogin .score-container form #userName:focus {
   color: black;
 }
 
-body main #isLogin .score-container form #score-submit {
+body main #isLogin .score-container form #score-submit-button {
   color: white;
   margin: 1em 0 0 45%;
   background-color: rgba(233, 124, 73, 0.8);
@@ -112,7 +112,7 @@ body main #isLogin .score-container form #score-submit {
           box-shadow: 0 0 10px rgba(233, 124, 73, 0.8);
 }
 
-body main #isLogin .score-container form #score-submit:hover {
+body main #isLogin .score-container form #score-submit-button:hover {
   -webkit-box-shadow: 0 0 50px rgba(233, 124, 73, 0.8);
           box-shadow: 0 0 50px rgba(233, 124, 73, 0.8);
 }

@@ -32,14 +32,18 @@
 				</button>
 				<section class="score-container">
 					<p id="login-text"></p>
-					<form>
+					<form id="score-submit" onsubmit="return false">
 						<input
 							type="text"
 							id="userName"
 							placeholder="ユーザ名（公開されます）"
 							required
 						/>
-						<button type="submit" id="score-submit" class="shadow-button">
+						<button
+							type="submit"
+							id="score-submit-button"
+							class="shadow-button"
+						>
 							スコアを投稿
 						</button>
 					</form>

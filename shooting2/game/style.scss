@@ -25,7 +25,8 @@ body {
 				margin: 0 auto;
 			}
 			#firebase-ui-container {
-				margin-right: 55%;
+				// margin-right: 55%;
+				width: 100%;
 			}
 			.login-text {
 				color: white;
@@ -90,7 +91,7 @@ body {
 						}
 					}
 
-					#score-submit {
+					#score-submit-button {
 						color: white;
 						margin: 1em 0 0 45%;
 						background-color: $button-color-red;
