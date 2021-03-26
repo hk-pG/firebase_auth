@@ -131,9 +131,6 @@ let gameRound = 0;
 //スコア
 let score = 0;
 
-//見た目上のスコア
-let scoreView = 0;
-
 //背景の星の速度
 let starSpeed = 100;
 

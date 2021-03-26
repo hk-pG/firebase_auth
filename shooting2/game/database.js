@@ -32,24 +32,30 @@ const signOut = () => {
 	});
 };
 
+const isLogin = document.getElementById('isLogin');
 auth.onAuthStateChanged((user) => {
 	if (user) {
 		//ログインしている時
 		document.getElementById('isLogout').style.display = 'none';
+		isLogin.style.display = 'flex';
 		const docUser = db.collection('profiles').doc(`${auth.currentUser.uid}`);
 		docUser
 			.get()
 			.then((doc) => {
 				if (doc.exists) {
+					//既にアカウントが存在する
+					const loginText_inner = `ようこそ、${doc.data().name}`;
+					document.getElementById('login-text').innerHTML = loginText_inner;
+
 					console.log(doc.data());
-					const signOutButton = `
-                <p class="login-text"> ようこそ、${doc.data().name} </p>
-                <button type="submit" onClick="signOut()">サインアウト</button>
-                `;
-					document.getElementById('isLogin').innerHTML = signOutButton;
 					console.log('ログインしています');
+					console.log(`score : ${score}`);
 				} else {
-					console.log('error');
+					//アカウントのデータが存在しない
+					console.log('初ログイン');
+					console.log(`userID : ${user.uid} = userName : ${user.displayName}`);
+
+					//スコアを投稿する際に名前をセットする。
 				}
 			})
 			.catch((error) => {
@@ -57,7 +63,9 @@ auth.onAuthStateChanged((user) => {
 			});
 	} else {
 		//ログアウトしている時
-		document.getElementById('isLogin').style.display = 'none';
+		isLogin.style.display = 'none';
 		ui.start('#firebase-ui-container', uiConfig);
+
+		console.log(`score : ${score}`);
 	}
 });

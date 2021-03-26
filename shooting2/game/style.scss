@@ -1,0 +1,107 @@
+body {
+	background-color: #555555;
+
+	main {
+		margin: 0 auto;
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+
+		#canvas {
+			margin-top: 10%;
+			margin-left: 25%;
+		}
+
+		aside {
+			z-index: 1;
+			margin: 0 auto;
+			flex-direction: column;
+			width: 100%;
+		}
+
+		#isLogout {
+			margin-top: 10%;
+			section {
+				width: 90%;
+				margin: 0 auto;
+			}
+			#firebase-ui-container {
+				margin-right: 55%;
+			}
+			.login-text {
+				color: white;
+			}
+		}
+
+		#isLogin {
+			p {
+				color: rgba(255, 255, 255, 0.7);
+			}
+
+			$button-color-skyBlue: rgba(59, 168, 241, 0.8);
+			$button-color-red: rgba(233, 124, 73, 0.8);
+
+			.shadow-button {
+				border: none;
+				outline: none;
+				border-radius: 30px;
+				transition-duration: 0.3s;
+				cursor: pointer;
+				&:active {
+					box-shadow: none;
+					position: relative;
+					top: 1px;
+				}
+			}
+
+			#logout-button {
+				background-color: $button-color-skyBlue;
+				box-shadow: 0 0 10px $button-color-skyBlue;
+				color: white;
+				width: 30%;
+				margin-left: auto;
+
+				&:hover {
+					box-shadow: 0 0 50px $button-color-skyBlue;
+				}
+			}
+
+			.score-container {
+				margin: 10% auto;
+				form {
+					#userName {
+						display: block;
+						width: 13em;
+						line-height: 1.5em;
+						text-align: center;
+						outline: none;
+						color: white;
+						background-color: black;
+						border-radius: 30px;
+						border: 2px solid yellow;
+						transition-duration: 0.3s;
+						box-sizing: border-box;
+
+						&:focus {
+							border: 2px solid $button-color-skyBlue;
+							width: 20em;
+							padding: 0.7em 0;
+							background-color: white;
+							color: black;
+						}
+					}
+
+					#score-submit {
+						color: white;
+						margin: 1em 0 0 45%;
+						background-color: $button-color-red;
+						box-shadow: 0 0 10px $button-color-red;
+
+						&:hover {
+							box-shadow: 0 0 50px $button-color-red;
+						}
+					}
+				}
+			}
+		}
+	}
+}

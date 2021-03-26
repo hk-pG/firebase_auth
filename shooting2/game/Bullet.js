@@ -23,7 +23,7 @@ class Bullet extends Character {
 					//もし敵の hp が０以下ならば、死亡判定をする
 					if (enemy[i].hp <= 0) {
 						enemy[i].kill = true;
-						scoreView += enemy[i].score;
+						score += enemy[i].score;
 
 						//スコアを加算していく
 						//スコアをサーバに渡す処理

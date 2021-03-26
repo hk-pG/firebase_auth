@@ -9,13 +9,42 @@
 	</head>
 	<body>
 		<main>
-			<canvas id="canvas"></canvas>
-			<section class="form" id="isLogout">
-				<div id="firebase-ui-container"></div>
+			<section class="left"></section>
+			<section class="center">
+				<canvas id="canvas"></canvas>
 			</section>
-			<section id="isLogin">
-				<input type="text" id="userName" />
-			</section>
+			<aside id="isLogout">
+				<section>
+					<div id="firebase-ui-container"></div>
+					<div class="login-text">
+						スコアを投稿する際には、上記ボタンよりログインして下さい。
+					</div>
+				</section>
+			</aside>
+			<aside id="isLogin">
+				<button
+					type="submit"
+					id="logout-button"
+					class="logout-button shadow-button"
+					onClick="signOut()"
+				>
+					サインアウト
+				</button>
+				<section class="score-container">
+					<p id="login-text"></p>
+					<form>
+						<input
+							type="text"
+							id="userName"
+							placeholder="ユーザ名（公開されます）"
+							required
+						/>
+						<button type="submit" id="score-submit" class="shadow-button">
+							スコアを投稿
+						</button>
+					</form>
+				</section>
+			</aside>
 		</main>
 
 		<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>

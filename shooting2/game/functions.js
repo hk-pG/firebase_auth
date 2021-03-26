@@ -221,7 +221,7 @@ const information = () => {
 		y += 30;
 		let time = (gameTimer / 60).toFixed(2);
 		ctx.fillText(`TIME  : ${time} s`, x, y);
-		ctx.fillText(`SCORE : ${scoreView}`, x, y + 20);
+		ctx.fillText(`SCORE : ${score}`, x, y + 20);
 		ctx.fillText(`HP  : ${player.hp}`, x, y + 40);
 	} else {
 		drawCount++;
@@ -232,7 +232,7 @@ const information = () => {
 		}
 
 		ctx.fillText(`HP : ${player.hp}`, 10, screen_h - 20);
-		ctx.fillText(`SCORE : ${scoreView}`, 10, screen_h - 40);
+		ctx.fillText(`SCORE : ${score}`, 10, screen_h - 40);
 
 		//右下にタイマーを表示
 		let time = (gameTimer / 60).toFixed(2);
