@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import './App.css';
+import { Card } from '@material-ui/core/';
 
 const App:FC = () => (
   <>
@@ -7,7 +8,7 @@ const App:FC = () => (
       <h1>Title</h1>
     </header>
     <main>
-      <h2>Main</h2>
+      <Card>Hello</Card>
     </main>
   </>
 );
