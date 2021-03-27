@@ -40,6 +40,7 @@ auth.onAuthStateChanged((user) => {
 		isLogin.style.display = 'flex';
 		const docUser = db.collection('profiles').doc(`${auth.currentUser.uid}`);
 		const inputUserName = document.getElementById('userName');
+		const loginText = document.getElementById('login-text');
 
 		docUser
 			.get()
@@ -47,7 +48,7 @@ auth.onAuthStateChanged((user) => {
 				if (doc.exists) {
 					//既にアカウントが存在する
 					const loginText_inner = `ようこそ、${doc.data().name}さん`;
-					document.getElementById('login-text').innerHTML = loginText_inner;
+					loginText.innerHTML = loginText_inner;
 
 					console.log('ログインしています');
 					console.log('データの取得に成功しました');
@@ -87,13 +88,15 @@ auth.onAuthStateChanged((user) => {
 									{ merge: true }
 								)
 								.then(() => {
-									console.log('データの書き換えに成功しました');
+									alert('スコアを投稿しました');
+									inputUserName.value = '';
 								})
 								.catch((err) => {
 									console.error('データの書き換え失敗しました', err);
 								});
 						} else {
-							console.log('書き換えを行いませんでした');
+							alert('通信に成功しました');
+							console.log('スコアの書き換えを行いませんでした');
 						}
 
 						if (oldUserName !== inputUserName.value) {
@@ -105,10 +108,14 @@ auth.onAuthStateChanged((user) => {
 									{ merge: true }
 								)
 								.then(() => {
-									console.log('データの書き換えに成功しました');
+									alert('スコアを投稿しました');
+									const loginText_inner = `ようこそ、${inputUserName.value}さん`;
+									loginText.innerHTML = loginText_inner;
+									inputUserName.value = '';
 								})
 								.catch((err) => {
-									console.error('データの書き換え失敗しました', err);
+									alert('データの送信に失敗しました');
+									console.error('エラー', err);
 								});
 						}
 					});
@@ -126,10 +133,12 @@ auth.onAuthStateChanged((user) => {
 								score: score,
 							})
 							.then(() => {
-								console.log('success');
+								alert('スコアを投稿しました');
+								inputUserName.value = '';
 							})
-							.catch((error) => {
-								console.error('エラーだお', error);
+							.catch((err) => {
+								alert('データの送信に失敗しました');
+								console.error('エラー', err);
 							});
 					});
 				}
