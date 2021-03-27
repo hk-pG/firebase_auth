@@ -4,13 +4,23 @@
 document.onkeydown = (e) => {
 	key[e.keyCode] = true;
 
-	if (gameOver && e.keyCode === 82) {
+	if ((gameOver || gameClear) && e.keyCode === 82 /* R */ && inputOnFocus) {
 		document.location.reload();
 	}
 
-	if (e.keyCode !== 17 && e.keyCode !== 82 && e.keyCode !== 70) {
-		// e.preventDefault();
+	if (
+		e.keyCode !== 17 && //Ctrl
+		e.keyCode !== 82 && //R
+		e.keyCode !== 70 && //F
+		!(gameOver || gameClear)
+	) {
+		e.preventDefault();
 	}
+};
+
+//認証画面の表示
+const finishGame = () => {
+	afterGame.classList.remove('playing');
 };
 
 //キーボードが離された時
@@ -113,6 +123,7 @@ const isAttacked = (object) => {
 	player.hp -= 1;
 	if (player.hp < 0) {
 		gameOver = true;
+		finishGame();
 	} else {
 		object.hp--;
 		if (object.hp < 0) {
@@ -207,6 +218,8 @@ const information = () => {
 		y += 40;
 		ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
 		ctx.fillText(message2, x, y);
+		ctx.font = '15px Verdana';
+		ctx.fillText(`SCORE : ${score}`, 10, screen_h - 40);
 	} else if (gameClear) {
 		//ゲームクリア時のメッセージ
 		ctx.font = '30px Verdana';

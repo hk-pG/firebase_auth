@@ -14,7 +14,7 @@ class Player {
 		this.count = 0;
 		this.maxHp = 10;
 		//自機HP
-		this.hp = 10;
+		this.hp = 5;
 
 		//自機の攻撃力
 		this.power = 1;

@@ -21,7 +21,7 @@ class Bullet extends Character {
 					enemy[i].hp -= player.power;
 
 					//もし敵の hp が０以下ならば、死亡判定をする
-					if (enemy[i].hp <= 0) {
+					if (enemy[i].hp <= 0 && !(gameClear || gameOver)) {
 						enemy[i].kill = true;
 						score += enemy[i].score;
 

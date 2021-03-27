@@ -40,7 +40,6 @@ auth.onAuthStateChanged((user) => {
 		isLogin.style.display = 'flex';
 		const docUser = db.collection('profiles').doc(`${auth.currentUser.uid}`);
 		const inputUserName = document.getElementById('userName');
-		const scoreSubmit = document.getElementById('score-submit');
 
 		docUser
 			.get()
@@ -51,9 +50,8 @@ auth.onAuthStateChanged((user) => {
 					document.getElementById('login-text').innerHTML = loginText_inner;
 
 					console.log('ログインしています');
-					console.log(
-						`データの取得に成功しました：${doc.data().name}-${doc.data().score}`
-					);
+					console.log('データの取得に成功しました');
+					console.log(doc.data());
 
 					//既存のユーザ名を取得する
 					let oldUserName;

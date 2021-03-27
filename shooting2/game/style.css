@@ -116,4 +116,13 @@ body main #isLogin .score-container form #score-submit-button:hover {
   -webkit-box-shadow: 0 0 50px rgba(233, 124, 73, 0.8);
           box-shadow: 0 0 50px rgba(233, 124, 73, 0.8);
 }
+
+.playing {
+  opacity: 0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  pointer-events: none;
+}
 /*# sourceMappingURL=style.css.map */

@@ -1,6 +1,24 @@
 const info = true;
 const debug = false;
 
+//名前の入力欄
+const scoreSubmit = document.getElementById('score-submit');
+
+//入力欄にフォーカスがあるときは、Rでのリロードをキャンセルする
+let inputOnFocus = true;
+
+scoreSubmit.addEventListener('click', () => {
+	inputOnFocus = false;
+});
+
+scoreSubmit.addEventListener('focusout', () => {
+	inputOnFocus = true;
+});
+
+//認証画面の表示をゲームの終了後のみにする
+const afterGame = document.getElementById('after-game');
+afterGame.classList.add('playing');
+
 //右クリックの回数を数える
 let rightClick = 0;
 
@@ -10,14 +28,14 @@ const jumpUrl = [
 	'https://student.hamako-ths.ed.jp/~ei2030/games/tetorisu/speedUp_tetorisu/index.html',
 ];
 //右クリック禁止
-// document.oncontextmenu = () => {
-// 	if (rightClick > 5) {
-// 		console.log('The page is corrupted.');
-// 		location.href = jumpUrl[rand(0, 2)];
-// 	}
-// 	rightClick++;
-// 	return false;
-// };
+document.oncontextmenu = () => {
+	if (rightClick > 5) {
+		console.log('The page is corrupted.');
+		location.href = jumpUrl[rand(0, 2)];
+	}
+	rightClick++;
+	return false;
+};
 
 if (debug) {
 	console.log('ready OK');
@@ -227,6 +245,7 @@ const gameInit = () => {
 					//8秒程度経過したらゲームクリアを表示する
 					setTimeout(() => {
 						gameClear = true;
+						finishGame();
 					}, 8000);
 				}
 			}

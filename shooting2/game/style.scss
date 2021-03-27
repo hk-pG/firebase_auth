@@ -106,3 +106,9 @@ body {
 		}
 	}
 }
+
+.playing {
+	opacity: 0;
+	user-select: none;
+	pointer-events: none;
+}
