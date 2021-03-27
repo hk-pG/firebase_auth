@@ -1,0 +1,6 @@
+build/
+public/
+**/coverage/
+**/*.min.js
+*.config.js
+.*lintrc.js
