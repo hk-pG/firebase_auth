@@ -1,16 +1,32 @@
 import { FC } from 'react';
 import './App.css';
-import { Card } from '@material-ui/core/';
+import { Card, CardContent, Button } from '@material-ui/core';
 
-const App:FC = () => (
-  <>
-    <header>
-      <h1>Title</h1>
-    </header>
-    <main>
-      <Card>Hello</Card>
-    </main>
-  </>
-);
+import firebase from './plugins/index';
 
+const db = firebase.firestore();
+// const auth = firebase.auth();
+
+const App:FC = () => {
+  const i = 0;
+
+  return (
+    <>
+      <Card>
+        <CardContent>
+          <Button onClick={() => {
+            db.collection('profiles').doc('sample2').set({
+              name: 'success',
+            }).catch((err) => {
+              console.log('えらー', err);
+            });
+          }}
+          >
+            {i}
+          </Button>
+        </CardContent>
+      </Card>
+    </>
+  );
+};
 export default App;
