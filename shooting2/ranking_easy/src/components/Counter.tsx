@@ -36,18 +36,25 @@ const Counter: FC = () => {
 
 	return (
 		<>
-			<Paper className="paperBlock" elevation={3}>
+			<Paper className='paperBlock' elevation={3}>
 				<CardContent>
 					<h1>{count}</h1>
 					<CardActions className={centerBlock}>
 						<Button
-							variant="contained"
+							variant='contained'
 							className={buttonRed}
-							onClick={increment}
+							onClick={() => {
+								increment();
+							}}
 						>
 							+
 						</Button>
-						<Button variant="contained" color="primary" onClick={decrement}>
+						<Button
+							variant='contained'
+							onClick={() => {
+								decrement();
+							}}
+						>
 							-
 						</Button>
 					</CardActions>
