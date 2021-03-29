@@ -61,6 +61,10 @@ node_modules/
 
 # Yarn Integrity file
 .yarn-integrity
+yarn.lock
 
 # dotenv environment variables file
 .env
+
+# Intellij idea
+.idea/

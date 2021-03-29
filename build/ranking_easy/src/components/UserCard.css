@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500&display=swap');
+
+.user-card {
+	margin: 1em;
+	font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+.card-contents {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
