@@ -1,34 +1,14 @@
-import { FC, useState, useEffect } from 'react';
-import UserCard from './UserCard';
-import '../App.css';
-import { db } from '../config.rnk';
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const getData = () => {
-	console.log('でーた取得');
-
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	db.collection('profiles')
-		.get()
-		// @ts-ignore
-		.then((doc) => {
-			// @ts-ignore
-			doc.forEach((user) => {
-				console.log(user.data());
-			});
-		})
-		// @ts-ignore
-		.catch((error) => {
-			console.log('エラッたお', error);
-		});
-};
+import { FC, useState, useEffect } from "react";
+import UserCard from "./UserCard";
+import "../App.css";
+import { db } from "../config.rnk";
 
 const Ranking: FC = () => {
-	const [data, setData] = useState([{ name: '', score: '' }]);
+	const [data, setData] = useState([{ name: "レッツ剛田", score: 1000 }]);
 
 	useEffect(() => {
 		// @ts-ignore
-		const unSub = db.collection('profiles').onSnapshot((snapshot) => {
+		const unSub = db.collection("profiles").onSnapshot((snapshot) => {
 			setData(
 				// @ts-ignore
 				snapshot.docs.map((doc) => ({
@@ -37,8 +17,16 @@ const Ranking: FC = () => {
 				}))
 			);
 		});
+		data.sort((a, b) => b.score - a.score);
 		return () => unSub();
+	}, [data]);
+
+	useEffect(() => {
+		const newData = data.map((doc) => doc);
+		setData(newData);
+		// eslint-disable-next-line
 	}, []);
+
 	return (
 		<>
 			<div>
@@ -46,6 +34,7 @@ const Ranking: FC = () => {
 					<UserCard
 						className="user-card"
 						key={i}
+						index={i}
 						name={doc.name}
 						score={doc.score}
 					/>
