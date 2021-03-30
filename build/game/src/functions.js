@@ -121,7 +121,7 @@ const moreExplosion = (x, y, vx, vy) => {
 
 const isAttacked = (object) => {
 	player.hp -= 1;
-	if (player.hp < 0) {
+	if (player.hp <= -1) {
 		gameOver = true;
 		finishGame();
 	} else {
@@ -220,6 +220,7 @@ const information = () => {
 		ctx.fillText(message2, x, y);
 		ctx.font = '15px Verdana';
 		ctx.fillText(`SCORE : ${score}`, 10, screen_h - 40);
+		ctx.fillText(`HP : ${player.hp}`, 10, screen_h - 60);
 	} else if (gameClear) {
 		//ゲームクリア時のメッセージ
 		ctx.font = '30px Verdana';

@@ -1,5 +1,3 @@
-'use strict';
-
 class EnemyShot extends Character {
 	constructor(snum, x, y, vx, vy, timer) {
 		super(snum, x, y, vx, vy);

@@ -1,5 +1,3 @@
-'use strict';
-
 class Bullet extends Character {
 	constructor(x, y, vx, vy) {
 		super(6, x, y, vx, vy);

@@ -1,4 +1,3 @@
-"use strict";
 class Explosion extends Character {
 	constructor(c, x, y, vx, vy) {
 		super(0, x, y, vx, vy);

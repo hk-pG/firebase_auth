@@ -1,0 +1,13 @@
+!#/bin/zsh
+
+cat $1 >> ./encode/all.js
+cat $3 >> ./encode/all.js
+cat $4 >> ./encode/all.js
+cat $5 >> ./encode/all.js
+cat $6 >> ./encode/all.js
+cat $7 >> ./encode/all.js
+cat $8 >> ./encode/all.js
+cat $9 >> ./encode/all.js
+cat $10 >> ./encode/all.js
+cat $11 >> ./encode/all.js
+cat $12 >> ./encode/all.js

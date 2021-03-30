@@ -1,5 +1,3 @@
-"use strict";
-
 class Star {
 	constructor() {
 		this.x = rand(0, field_w) << 8;
@@ -19,7 +17,7 @@ class Star {
 			y >= camera_y + screen_h
 		)
 			return;
-		vctx.fillStyle = rand(0, 2) !== 0 ? "#66f" : "#aef";
+		vctx.fillStyle = rand(0, 2) !== 0 ? '#66f' : '#aef';
 		vctx.fillRect(this.x >> 8, this.y >> 8, this.sz, this.sz);
 	}
 

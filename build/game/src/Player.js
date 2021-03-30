@@ -1,5 +1,3 @@
-'use strict';
-
 class Player {
 	constructor() {
 		this.x = (field_w / 2) << 8;

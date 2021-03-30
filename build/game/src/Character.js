@@ -1,5 +1,3 @@
-"use strict";
-
 class Character {
 	constructor(snum, x, y, vx, vy) {
 		this.snum = snum;

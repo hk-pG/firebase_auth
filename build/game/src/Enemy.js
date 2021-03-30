@@ -1,5 +1,3 @@
-"use strict";
-
 class Enemy extends Character {
 	constructor(enemy, x, y, vx, vy) {
 		super(0, x, y, vx, vy);
@@ -11,10 +9,10 @@ class Enemy extends Character {
 		this.flag = false;
 
 		//弾の発射角度
-		this.direction = 90;//右側が０度なので、下方向は９０度となる
-        this.directionGap = 10;
+		this.direction = 90; //右側が０度なので、下方向は９０度となる
+		this.directionGap = 10;
 
-        //リロード時間
+		//リロード時間
 		this.reload = 0;
 	}
 
@@ -22,7 +20,7 @@ class Enemy extends Character {
 		super.update();
 
 		if (this.reload) {
-			this.reload --;
+			this.reload--;
 		}
 
 		//個別のアップデート
@@ -38,4 +36,9 @@ class Enemy extends Character {
 	}
 }
 
-let enemyFunctions = [enemyMovePink, enemyMoveYellow, enemyMoveBoss, enemyMoveYellowChild];
+let enemyFunctions = [
+	enemyMovePink,
+	enemyMoveYellow,
+	enemyMoveBoss,
+	enemyMoveYellowChild,
+];

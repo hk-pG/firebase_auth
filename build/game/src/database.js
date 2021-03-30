@@ -1,5 +1,3 @@
-'use strict';
-
 const auth = firebase.auth();
 const ui = new firebaseui.auth.AuthUI(auth);
 const db = firebase.firestore();
@@ -132,6 +130,7 @@ auth.onAuthStateChanged((user) => {
 							.set({
 								name: document.getElementById('userName').value,
 								score: score,
+								life: player.hp,
 							})
 							.then(() => {
 								alert('スコアを投稿しました');

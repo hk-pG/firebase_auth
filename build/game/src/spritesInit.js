@@ -1,5 +1,3 @@
-"use strict";
-
 //スプライト
 let sprite = [
 	new Sprite(0, 0, 22, 42), //0　自機　左２
