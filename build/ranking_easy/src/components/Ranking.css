@@ -1,0 +1,11 @@
+.user-list:nth-child(1) {
+	background-color: yellow;
+}
+
+.user-list:nth-child(2) {
+	background-color: grey;
+}
+
+.user-list:nth-child(3) {
+	background-color: brown;
+}

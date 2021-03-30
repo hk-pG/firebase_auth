@@ -1,10 +1,13 @@
 import { FC, useState, useEffect } from "react";
 import UserCard from "./UserCard";
-import "../App.css";
 import { db } from "../config.rnk";
+// import "./Ranking.css";
 
 const Ranking: FC = () => {
-	const [data, setData] = useState([{ name: "レッツ剛田", score: 1000 }]);
+	const [data, setData] = useState([{ name: "初期値", score: 404 }]);
+	const [sortedData, setSortedData] = useState([
+		{ name: "初期値", score: 999 },
+	]);
 
 	useEffect(() => {
 		// @ts-ignore
@@ -16,21 +19,26 @@ const Ranking: FC = () => {
 					score: doc.data().score,
 				}))
 			);
+			console.log(data);
 		});
 		data.sort((a, b) => b.score - a.score);
+		console.log("ソート1", data);
+
 		return () => unSub();
-	}, [data]);
+		// eslint-disable-next-line
+	}, []);
 
 	useEffect(() => {
-		const newData = data.map((doc) => doc);
-		setData(newData);
+		const newData = data;
+		setSortedData(newData);
+		console.log("そーと2", newData);
 		// eslint-disable-next-line
 	}, []);
 
 	return (
 		<>
-			<div>
-				{data.map((doc, i) => (
+			<div className="user-list">
+				{sortedData.map((doc, i) => (
 					<UserCard
 						className="user-card"
 						key={i}
