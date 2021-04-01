@@ -1,10 +1,11 @@
 import { FC, useState, useEffect } from 'react';
-import UserCard from './UserCard';
+import { Card } from '@material-ui/core';
 import { db } from '../config.rnk';
-// import "./Ranking.css";
+import UserCard from './UserCard';
+import ExampleCard from './ExampleCard';
 
 const Ranking: FC = () => {
-	const [data, setData] = useState([{ name: '', score: 0 }]);
+	const [data, setData] = useState([{ name: '', score: 0, life: 0 }]);
 
 	useEffect(() => {
 		// @ts-ignore
@@ -15,10 +16,10 @@ const Ranking: FC = () => {
 				setData(
 					snapshot.docs.map((doc) => ({
 						name: doc.data().name,
+						life: doc.data().life,
 						score: doc.data().score,
 					}))
 				);
-				console.log('データ取得', data);
 			});
 		return () => unSub();
 		// eslint-disable-next-line
@@ -27,15 +28,19 @@ const Ranking: FC = () => {
 	return (
 		<>
 			<div className="user-list">
-				{data.map((doc, i) => (
-					<UserCard
-						className="user-card"
-						key={i}
-						index={i}
-						name={doc.name}
-						score={doc.score}
-					/>
-				))}
+				<Card className="card-container">
+					<ExampleCard />
+					{data.map((doc, i) => (
+						<UserCard
+							className={`user-card number-${i + 1}`}
+							key={i}
+							index={i}
+							name={doc.name}
+							score={doc.score}
+							life={doc.life}
+						/>
+					))}
+				</Card>
 			</div>
 		</>
 	);

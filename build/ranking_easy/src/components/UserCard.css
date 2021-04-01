@@ -22,3 +22,95 @@
 	display: flex;
 	justify-content: space-between;
 }
+
+.number-1 > .card-in-button {
+	animation-name: color-gradient, first-color-gradient;
+	animation-duration: 10s;
+	animation-iteration-count: infinite;
+	background-image: linear-gradient(135deg, yellow, orange, yellow, orange);
+	background-size: 400%;
+}
+
+.number-2 > .card-in-button {
+	animation-name: color-gradient, second-color-gradient;
+	animation-duration: 10s;
+	animation-iteration-count: infinite;
+	background-size: 400%;
+	background-image: linear-gradient(
+		90deg,
+		grey 0%,
+		white 60%,
+		grey 75%,
+		white 95%
+	);
+}
+
+.number-3 > .card-in-button {
+	background-image: linear-gradient(40deg, brown, orange);
+	color: white;
+}
+
+@keyframes color-gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+
+	25% {
+		background-position: 50% 50%;
+	}
+
+	50% {
+		background-position: 100% 50%;
+	}
+
+	75% {
+		background-position: 75% 50;
+	}
+
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+@keyframes first-color-gradient {
+	0% {
+		color: black;
+	}
+
+	25% {
+		color: white;
+	}
+
+	50% {
+		color: black;
+	}
+
+	75% {
+		color: white;
+	}
+
+	100% {
+		color: black;
+	}
+}
+@keyframes second-color-gradient {
+	0% {
+		color: white;
+	}
+
+	25% {
+		color: black;
+	}
+
+	50% {
+		color: white;
+	}
+
+	75% {
+		color: black;
+	}
+
+	100% {
+		color: white;
+	}
+}
