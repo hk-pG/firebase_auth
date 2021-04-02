@@ -3,16 +3,22 @@ const ui = new firebaseui.auth.AuthUI(auth);
 const db = firebase.firestore();
 
 const uiConfig = {
-	callback: {
+	callbacks: {
 		signInSuccessWithAuthResult: function (authResult, redirectUrl) {
+			console.log(`おうすりぞると : ${authResult}`);
+			console.log(redirectUrl);
 			return true;
+		},
+		uiShown: function () {
+			document.getElementById('loader').style.display = 'none';
 		},
 	},
 	signInFlow: 'popup',
-	signInSuccess: 'index.html',
-	signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID],
-	// toUrl: 'index.html',
-	// privacyUrl: 'index.html',
+	signInOptions: [
+		firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+		firebase.auth.GithubAuthProvider.PROVIDER_ID,
+	],
+	// signInSuccessUrl: '',
 };
 
 function signOut() {
@@ -150,7 +156,6 @@ auth.onAuthStateChanged((user) => {
 		//ログアウトしている時
 		isLogin.style.display = 'none';
 		ui.start('#firebase-ui-container', uiConfig);
-
 		console.log(`score : ${score}`);
 	}
 });
