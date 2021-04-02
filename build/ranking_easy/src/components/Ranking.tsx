@@ -6,11 +6,12 @@ import ExampleCard from './ExampleCard';
 
 const Ranking: FC = () => {
 	const [data, setData] = useState([{ name: '', score: 0, life: 0 }]);
+	const profRef = db.collection('profiles');
 
 	useEffect(() => {
 		// @ts-ignore
-		const unSub = db
-			.collection('profiles')
+		const unSub = profRef
+			.orderBy('life', 'desc')
 			.orderBy('score', 'desc')
 			.onSnapshot((snapshot) => {
 				setData(

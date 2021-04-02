@@ -61,12 +61,14 @@ auth.onAuthStateChanged((user) => {
 					//既存のユーザ名を取得する
 					let oldUserName;
 					let oldScore;
+					let oldLife;
 					docUser
 						.get()
 						.then((doc) => {
 							if (doc.exists) {
 								oldUserName = doc.data().name;
 								oldScore = doc.data().score;
+								oldLife = doc.data().life;
 								inputUserName.value = oldUserName;
 							} else {
 								oldUserName = undefined;
@@ -83,7 +85,7 @@ auth.onAuthStateChanged((user) => {
 
 					//スコアの投稿処理
 					scoreSubmit.addEventListener('submit', () => {
-						if (score > oldScore) {
+						if (player.hp > oldLife) {
 							docUser
 								.set(
 									{
@@ -99,6 +101,19 @@ auth.onAuthStateChanged((user) => {
 								.catch((err) => {
 									console.error('データの書き換え失敗しました', err);
 								});
+						} else if (score > oldScore) {
+							if (
+								window.confirm(`ランキングの順位が下がる可能性があります。
+							データを送信してもよろしいですか？`)
+							) {
+								docUser.set(
+									{
+										score: score,
+										life: player.hp,
+									},
+									{ merge: true }
+								);
+							}
 						} else {
 							alert('通信に成功しました');
 							console.log('スコアの書き換えを行いませんでした');
