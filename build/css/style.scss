@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500&display=swap');
+body {
+	background-color: rgb(232, 238, 254);
+	// Index-Librorum-Prohibitorum
+	height: 100vh;
+}
+
+header {
+	width: 100%;
+	animation-name: header-color;
+	animation-duration: 20s;
+	animation-iteration-count: infinite;
+
+	.header-container {
+		width: 80%;
+		margin: 0 auto;
+		padding: 1em 0;
+
+		p {
+			font-weight: bold;
+			font-size: 2.5em;
+			color: white;
+		}
+	}
+}
+
+main {
+	.main-container {
+		width: 80%;
+		margin: 0 auto;
+		height: 100vh;
+		background-color: rgb(255, 255, 255);
+		height: 100vh;
+
+		.contents {
+			margin: 0 auto;
+			padding: 10% 0;
+			display: flex;
+			flex-direction: column;
+
+			.container {
+				text-align: center;
+
+				a {
+					display: block;
+					text-decoration: none;
+					cursor: pointer;
+					width: 50%;
+					font-size: 2em;
+					font-family: 'M PLUS Rounded 1c', sans-serif;
+					margin: 1em auto;
+					padding: 1em;
+					border-radius: 50px;
+					color: white;
+					background-size: 400%;
+					background-position: 0%;
+					box-shadow: 0 2px 5px 4px rgba(158, 130, 130, 0.514);
+					transition-duration: 0.6s;
+
+					&:hover {
+						border-radius: 0;
+						box-shadow: 0 4px 10px 8px rgba(158, 130, 130, 0.514);
+						background-position: 100%;
+					}
+
+					&:active {
+						box-shadow: none;
+						position: relative;
+						top: 2px;
+					}
+				}
+
+				.to-game {
+					background-image: linear-gradient(45deg, yellow, red, blue, green);
+				}
+
+				.to-ranking {
+					color: white;
+					background-image: linear-gradient(
+						-45deg,
+						rgb(162, 108, 199),
+						rgb(129, 194, 75)
+					);
+					position: relative;
+					overflow: hidden;
+					span {
+						position: relative;
+					}
+
+					&::before {
+						position: absolute;
+						right: 120%;
+						top: 100%;
+
+						width: 150%;
+						height: 350%;
+
+						content: '';
+						background-image: linear-gradient(50deg, red 0% 45%, blue 40% 100%);
+						transition: all 0.3s ease-in-out;
+						transform: translateX(10%) translateY(15%) rotate(-20deg);
+					}
+					&:hover::before {
+						transform: translateX(100%) translateY(-70%) rotate(-20deg);
+					}
+				}
+			}
+		}
+	}
+}
+
+@keyframes header-color {
+	0% {
+		background-color: red;
+	}
+
+	25% {
+		background-color: blue;
+	}
+
+	50% {
+		background-color: yellow;
+	}
+
+	75% {
+		background-color: green;
+	}
+
+	100% {
+		background-color: red;
+	}
+}
