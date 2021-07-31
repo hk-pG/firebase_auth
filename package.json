@@ -1,0 +1,8 @@
+{
+  "name": "firebase_auth",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/hk-p114514/firebase_auth.git",
+  "author": "hk-p114514 <hukada.gogotea@gmail.com>",
+  "license": "MIT"
+}
