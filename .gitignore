@@ -68,4 +68,5 @@ yarn.lock
 
 # Intellij idea
 .idea/
+
 build/game_import/
