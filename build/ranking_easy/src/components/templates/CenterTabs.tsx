@@ -5,6 +5,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import { TabPanel } from '../organisms/TabPanel';
 import { OverAll } from './OverAll';
+import { Nearly15 } from './Nearly15';
 
 const a11yProps = (index: any) => {
   return {
@@ -31,20 +32,19 @@ const CenterTabs: FC = () => {
   return (
     <div className={classes.root}>
       <AppBar position="static">
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          aria-label="simple tabs example"
-        >
+        <Tabs value={value} onChange={handleChange}>
           <Tab label="総合ランキング" {...a11yProps(0)} />
           <Tab label="直近15分ランキング" {...a11yProps(1)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
+        {/* 1つ目のタブを押したときに出て来る要素 */}
         <OverAll />
       </TabPanel>
+
       <TabPanel value={value} index={1}>
-        Item Two
+        {/* 2つ目のタブを押したときに出て来る要素 */}
+        <Nearly15 />
       </TabPanel>
     </div>
   );
