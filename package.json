@@ -4,5 +4,8 @@
   "main": "index.js",
   "repository": "https://github.com/hk-p114514/firebase_auth.git",
   "author": "hk-p114514 <hukada.gogotea@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "typesync": "^0.8.0"
+  }
 }

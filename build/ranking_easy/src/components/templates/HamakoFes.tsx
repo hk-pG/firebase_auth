@@ -3,12 +3,13 @@ import { db } from '../../config.rnk';
 import { maxRound } from '../../specialGlobal';
 import { UserCard } from '../organisms/UserCard';
 
-const OverAll: FC = () => {
+const HamakoFes: FC = () => {
 	const [data, setData] = useState([{ name: '', score: 0, life: 0, round: 0 }]);
-	const profRef = db.collection('profiles');
+	const hamakoFesDoc = db.collection('hamako-fes');
 
 	useEffect(() => {
-		profRef
+		const userData = hamakoFesDoc
+			.orderBy('round', 'desc')
 			.orderBy('life', 'desc')
 			.orderBy('score', 'desc')
 			.onSnapshot((snapshot) => {
@@ -22,14 +23,15 @@ const OverAll: FC = () => {
 					}))
 				);
 			});
+		return () => userData();
 	}, []);
 
 	return (
 		<>
 			{data.map((doc, i) => {
+				console.log(`${i}: ${doc}`);
 				return (
 					<UserCard
-						key={i}
 						className={`user-card number-${i + 1}`}
 						index={i}
 						name={doc.name}
@@ -44,4 +46,4 @@ const OverAll: FC = () => {
 	);
 };
 
-export { OverAll };
+export { HamakoFes };

@@ -3,12 +3,21 @@ import { db } from '../../config.rnk';
 import { maxRound } from '../../specialGlobal';
 import { UserCard } from '../organisms/UserCard';
 
-const OverAll: FC = () => {
-	const [data, setData] = useState([{ name: '', score: 0, life: 0, round: 0 }]);
-	const profRef = db.collection('profiles');
+type Props = {
+	collectionName: string;
+};
+
+const DataDisplay: FC<Props> = (props) => {
+	const { collectionName } = props;
+	const [data, setData] = useState([
+		{ name: '...', score: 0, life: 0, round: 0 },
+	]);
+
+	const collection = db.collection(collectionName);
 
 	useEffect(() => {
-		profRef
+		collection
+			.orderBy('round', 'desc')
 			.orderBy('life', 'desc')
 			.orderBy('score', 'desc')
 			.onSnapshot((snapshot) => {
@@ -27,15 +36,13 @@ const OverAll: FC = () => {
 	return (
 		<>
 			{data.map((doc, i) => {
+				console.log(`${i}: ${doc}`);
 				return (
 					<UserCard
-						key={i}
 						className={`user-card number-${i + 1}`}
+						key={i}
 						index={i}
-						name={doc.name}
-						score={doc.score}
-						life={doc.life}
-						round={doc.round}
+						{...doc}
 						maxRound={maxRound}
 					/>
 				);
@@ -44,4 +51,4 @@ const OverAll: FC = () => {
 	);
 };
 
-export { OverAll };
+export { DataDisplay };
