@@ -1,4 +1,4 @@
-import { FC, useState, useEffect } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import { Paper, Card, CardContent, ListItem } from '@material-ui/core';
 import './UserCard.css';
 
@@ -8,19 +8,23 @@ type Props = {
 	name: string;
 	score: number;
 	life: number;
+	round: number;
+	maxRound: number;
 };
 
 const UserCard: FC<Props> = (props) => {
-	const { className, name, score, index, life } = props;
-	const [lifeInfo, setLifeInfo] = useState('...');
+	const { className, name, score, index, life, round = 0, maxRound } = props;
+	const [clearInfo, setClearInfo] = useState('...');
+
 	useEffect(() => {
-		console.log('更新');
-		if (life < 0) {
-			setLifeInfo('ゲームオーバー');
-		} else if (life <= 5) {
-			setLifeInfo(`残機 : ${life} でクリア`);
+		if (round <= 0) {
+			setClearInfo(`ゲームオーバー`);
+		} else if (round < maxRound) {
+			setClearInfo(`ステージ${round}まで残機${life}でクリア`);
+		} else if (round >= maxRound) {
+			setClearInfo(`残機${life}でクリア`);
 		}
-	}, [life]);
+	}, [round, maxRound, life]);
 
 	return (
 		<Paper className={className}>
@@ -35,13 +39,11 @@ const UserCard: FC<Props> = (props) => {
 						<div className="rank">第{index + 1}位</div>
 						<section className="user-info">
 							<div className="name-container container">
-								<div className="name">NAME : </div>
 								<div className="inName">{name}</div>
 							</div>
-							<div className="isClear">{lifeInfo}</div>
+							<div className="isClear">クリア状況 :{clearInfo}</div>
 							<div className="score-container container">
-								<div className="score">SCORE : </div>
-								<div className="inScore">{score} P</div>
+								<div className="inScore">SCORE : {score} P</div>
 							</div>
 						</section>
 					</CardContent>
@@ -51,4 +53,6 @@ const UserCard: FC<Props> = (props) => {
 	);
 };
 
-export default UserCard;
+UserCard.displayName = 'UserCard';
+
+export { UserCard };
