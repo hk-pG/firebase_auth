@@ -31,6 +31,7 @@ const DataDisplay: FC<Props> = (props) => {
 					}))
 				);
 			});
+		// eslint-disable-next-line
 	}, []);
 
 	return (
