@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { Paper, Card, CardContent, ListItem } from '@material-ui/core';
 import './UserCard.css';
 

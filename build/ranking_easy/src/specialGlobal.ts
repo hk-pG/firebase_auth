@@ -1,1 +1,1 @@
-export const maxRound: number = 2;
+export const maxRound: number = 3;
