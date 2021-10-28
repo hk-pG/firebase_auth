@@ -20,7 +20,7 @@ const UserCard: FC<Props> = (props) => {
 		if (round <= 0) {
 			setClearInfo(`ゲームオーバー`);
 		} else if (round < maxRound) {
-			setClearInfo(`ステージ${round}まで残機${life}でクリア`);
+			setClearInfo(`ステージ${round}までクリア`);
 		} else if (round >= maxRound) {
 			setClearInfo(`残機${life}でクリア`);
 		}
